@@ -6,7 +6,7 @@ from sklearn.utils import shuffle
 
 # read my data in
 data = pd.read_csv("student-mat.csv", sep = ";") # each attribite seperated by ;, not a ,
-print(data.head())
+# print(data.head())
 
 data =  data[["G1", "G2", "G3", "studytime", "failures", "absences", "freetime"]] # attributes
 
@@ -33,4 +33,5 @@ print("Intercept: \n" , linear.intercept_)
 predictions = linear.predict(x_test) # takes an array of arrays and the model will make predictions on our test_data, that we didn't train our model on
 print(f"The accuracy for this model is {accuracy} \n")
 for x in range(len(predictions)):
-    print(f"Prediction: {predictions[x]}, Attributes {x_test[x]}, Actual: {y_test[x]} \n")  # outputs the prediction, each of the used attributes, and the Actual grade
+    rounded_prediction = round(predictions[x], 2) # round the prediction nearest 100 place
+    print(f"Prediction: {rounded_prediction}, Attributes {x_test[x]}, Actual: {y_test[x]} \n")  # outputs the prediction, each of the used attributes, and the Actual grade
